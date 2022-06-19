@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        #products {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: auto;
+            gap: 10px 20px;
+            text-align: center;
+            padding: auto;
+        }
+
+        #products>div>img {
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }#filter{
+            border: 1px solid blue;
+            width: 120px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: #ffda00;
+        }button{
+            border: 1px solid transparent;
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: #ffda00;
+            transition: 0.5s;
+            cursor: pointer;
+            opacity: 0;
+        }button:hover{
+            opacity: 1;
+        }
+        p{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="filter">
+        <option value="All"> All Product</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Home Appliances">Home Appliances</option>
+        <option value="Fitness">Fitness</option>
+        <option value="kids">Kids</option>
+    </select>
+    <div id="products"></div>
+</body>
+<script>
+    let productData = [
+        {
+            brand: "Nova",
+            name: "Mobile Phone Nova8 Pro 12GB+512GB 7.1Inch..",
+            price: "20600",
+            productID: "item1",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6507287161137004544/16412/goods_thumb_220-v1/9301f01059aa.jpg",
+        },
+        {
+            brand: "White poland",
+            name: "Wall Mounted Pull Up Bar Dip Station 440lb..",
+            price: "2049",
+            
+            productID: "item2",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/16049/goods_thumb_220-v1/54c506069ef2.jpg",
+        },
+        {
+            brand: "Asus",
+            name: "KUU A8S Pro15.6-inch FHD IPS Screen 8GB RAM..",
+            price: "20799",
+            
+            productID: "item3",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6900746726869757952/16492/goods_thumb_220-v7/b87b9802f084.jpg",
+        },
+        {
+            brand: "TRONXY",
+            name: "TRONXY CRUX 1 3D printer Presale 180X180X180..",
+            price: "20200",
+            
+            productID: "item4",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878399324569661440/16517/goods_thumb_220-v1/a00cb9f65d8f.jpg",
+        },
+        {
+            brand: "V9",
+            name: "V9 Wireless Bluetooth CSR V4.1 Headset Sports..",
+            price: "2040",
+            
+            productID: "item5",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6882688590640508928/16508/goods_img-v1/83e81faaf67b.jpg",
+        },
+        {
+            brand: "Yellow",
+            name: "Fitness Sit Up Bar Assistant Gym Exercise..",
+            price: "20100",
+            
+            productID: "item6",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/15917/goods_thumb_220-v1/012a9f57892c.jpg",
+        },
+        {
+            brand: "MI",
+            name: "Smartphone S22 Ultra 5G Cellular 6.8 Inch 6800mAh..",
+            price: "20729",
+            
+            productID: "item7",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6883820374342168576/16487/goods_thumb_220-v1/9bd2c3157fee.jpg",
+        },
+        {
+            brand: "Xiaomi",
+            name: "Smart Watch Men 400Mah Big Battery Music Play Fitnes..",
+            price: "2049",
+            
+            productID: "item8",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878402251153666048/16417/goods_thumb_220-v3/21ff9307e5ee.jpg",
+        },
+        {
+            brand: "Hiseeu",
+            name: "Prime 8CH 2K HD Wireless Security Camera..",
+            price: "2080",
+            
+            productID: "item9",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6919674405698334720/16528/goods_thumb_220-v1/4194c0705ff9.jpg",
+        },
+        {
+            brand: "Xiaomi",
+            name: "Xiaomi Mi Intelligent Remote Control Car..",
+            price: "2056",
+            
+            productID: "item10",
+            catagory: "kids",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878391336429613056/16424/goods_img-v1/186cd6966d5f.jpg"
+        },
+        {
+            brand: "JJRX",
+            name: "JJRC X19 /X19 PRO RC Drone 4K GPS Obstacle..",
+            price: "2090",
+            
+            productID: "item11",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/store/6878025592978206720/16443/goods_thumb_220-v1/38cfb3700fe5.jpg",
+        },
+        {
+            brand: "JJRX",
+            name: "2022 New Mini Drone K7 4K HD Camera Wifi FPV 4..",
+            price: "2086",
+            
+            productID: "item12",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878025592978206720/16542/goods_thumb_220-v1/185db9573c5f.jpg",
+        },
+        {
+            brand: "Asus",
+            name: "Lenovo Tab P11 Global Firmware Xiaoxin Pad 11..",
+            price: "20499",
+            
+            productID: "item13",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6898654298117435392/16549/goods_thumb_220-v1/d87e35c0597d.jpg",
+        },
+        {
+            brand: "Xiaomi",
+            name: "Q35 Handheld Game Console 5000mAh Mobile Power..",
+            price: "20120",
+            
+            productID: "item14",
+            catagory: "kids",
+            img: "https://gloimg.gbtcdn.com/soa/gb/store/6878025592978206720/16550/goods_thumb_220-v1/b4a76d58b256.jpg",
+        },
+        {
+            brand: "TIENKIM",
+            name: "TIENKIM master GT 7.2 inch big screen gaming..",
+            price: "20130",
+           
+            productID: "item15",
+            catagory: "kids",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6908377430696849408/16522/goods_thumb_220-v1/bad4da8f65a9.jpg",
+        },
+        {
+            brand: "Mi",
+            name: "Original Xiaomi Mi Band 7 / 7 NFC Smart Wristband..",
+            price: "2056",
+            
+            productID: "item16",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878391336429613056/16534/goods_img-v1/ed230b4b2700.jpg",
+        },
+        {
+            brand: "WT09",
+            name: "WT09 Active Noise Cancelling Headphones Bluetooth..",
+            price: "2060",
+            
+            productID: "item17",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6926471294045319168/16529/goods_img-v1/8ad475fc01f3.jpg",
+        },
+        {
+            brand: "Xiaomi",
+            name: "Original Xiaomi Smart Magic Cube Bluetooth 3D Dyna..",
+            price: "2022",
+           
+            productID: "item18",
+            catagory: "kids",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878400698325856256/16419/goods_img-v1/22549f61229b.jpg",
+        },
+        {
+            brand: "Haylou",
+            name: "Haylou RS4 smart watches Global version Blood oxygen..",
+            price: "2051",
+            
+            productID: "item19",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6870745450383863808/16539/goods_img-v1/7a6e1bdf0f46.jpg",
+        },
+        {
+            brand: "ENGWE",
+            name: "ENGWE Bike C20 PRO Adult Electric Bike 36V19.2AH City..",
+            price: "20700",
+            
+            productID: "item20",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6896502277952172032/16460/goods_img-v3/5b9d1b9f7836.jpg",
+        },
+        {
+            brand: "Xaomi",
+            name: "Xiaomi PEN Mijia Super Durable Sign Pen 0.5mm MI..",
+            price: "2040",
+           
+            productID: "item21",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6898341271098814464/16469/goods_img-v1/126354806df6.jpg",
+        },
+        {
+            brand: "MI",
+            name: "Global Version MI 11 Ultra 6.3 inch Smartphone 12Gb Cell..",
+            price: "20500",
+            
+            productID: "item22",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6883820374342168576/16499/goods_img-v5/6233d35f6f8a.jpg",
+        },
+        {
+            brand: "Xiaomi",
+            name: "Xiaomi Fan 2 Smart Standing double layer fan blade..",
+            price: "20250",
+            productID: "item23",
+            catagory: "Home appliance",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6900386065325158400/16545/goods_img-v3/49bbbbea2c5b.jpg"
+        },
+        {
+            brand: "MI",
+            name: "2022 New Smartphone 7.3 Inch MIX4 72MP Camera..",
+            price: "20450",
+            productID: "item24",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6883820374342168576/16488/goods_img-v3/d238ad6a3d2a.jpg",
+        },
+        {
+            brand: "VDEO",
+            name: "A9 Mini WiFi Video Surveillance 1080p HD Infra..",
+            price: "20200",
+            productID: "item25",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6901174613791928320/16502/goods_img-v3/31d0d9d6c843.jpg",
+        },
+        {
+            brand: "GENX",
+            name: "Posture Corrector Back Posture Brace Clavicle..",
+            price: "2030",
+            productID: "item25",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/15904/goods_img-v1/b017d09ce353.jpg",
+        },
+        {
+            brand: "Samebike",
+            name: "Samebike MY-SM26 Electric Bike 26 Inch Tires..",
+            price: "20800",
+            productID: "item25",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6870745450383863808/16433/goods_thumb_220-v1/d9e6c7ef810e.jpg",
+        },
+        {
+            brand: "Xiaomi",
+            name: "Laptop 15.6 inch 8G RAM 128G 256G 512G 1TB S..",
+            price: "201000",
+            productID: "item25",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6897837697235349504/16511/goods_thumb_220-v3/5d28ea10c4a8.jpg",
+        },
+        {
+            brand: "MI",
+            name: "Xiaomi Mi Smart Door Window Sensor 2.. ",
+            price: "20150",
+            productID: "item25",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878391336429613056/16416/goods_thumb_220-v1/5e4e844f1ba6.jpg",
+        },
+        {
+            brand: "Xiaomi",
+            name: "New Xiaomi Smart Doorbell 3 Camera Video..",
+            price: "20110",
+            productID: "item25",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6899301501118902272/16480/goods_thumb_220-v3/f2c4144c9189.jpg",
+        },
+        {
+            brand: "JJRX",
+            name: "Food Vacuum Sealer Home Electric Vacuum Sealer..",
+            price: "2060",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/15893/goods_thumb_220-v1/f7522a5bb41f.jpg",
+        },
+        {
+            brand: "JJRX",
+            name: "2022 New Mini Drone K7 4K HD Camera Wifi FPV 4..",
+            price: "20300",
+            
+            productID: "item12",
+            catagory: "Electronics",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878025592978206720/16542/goods_thumb_220-v1/185db9573c5f.jpg",
+        },
+        {
+            brand: "Xiaomi",
+            name: "Xiaomi Portable Mini Air Conditioner USB Air Coo..",
+            price: "2050",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/15972/goods_thumb_220-v3/c9df1a151b14.jpg",
+        },
+        {
+            brand: "JJRX",
+            name: "Original Xiaomi Mijia Faucet Water Purifier..",
+            price: "20200",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878391336429613056/16445/goods_thumb_220-v1/42df6244aa8f.jpg",
+        },
+        {
+            brand: "WLToys",
+            name: "WLtoys A959-B A959 959-A RC Car 2.4GHz 4WD Rally..",
+            price: "20250",
+            
+            productID: "item12",
+            catagory: "kids",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/16093/goods_thumb_220-v1/c108f0815ba5.jpg",
+        },
+        {
+            brand: "JJRX",
+            name: "Dinosaur Treasure digging toys Eggs 12 Dinosaur..",
+            price: "2070",
+            
+            productID: "item12",
+            catagory: "kids",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878388619120406528/16415/goods_thumb_220-v1/d7fbfa948005.jpg",
+        },
+        {
+            brand: "Bicileta",
+            name: "bicicleta spinning Bicycle Exercise Bike Large Wide..",
+            price: "20700",
+            
+            productID: "item12",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6914288247233507328/16502/goods_thumb_220-v1/31b2c7eafb60.jpg",
+        },
+        {
+            brand: "JJRX",
+            name: "New Upgrade Sit Up Bench Home Fitness Supine..",
+            price: "20100",
+            
+            productID: "item12",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6914288247233507328/16502/goods_thumb_220-v1/0e27979ee94f.jpg",
+        },
+        {
+            brand: "JJRX",
+            name: "Massage Gun Deep Tissue Percussion Mini LCD 32..",
+            price: "2040",
+            
+            productID: "item12",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878024886355423232/16453/goods_thumb_220-v2/677443d1848e.jpg",
+        },
+        {
+            brand: "JJRX",
+            name: "210/260/300/420cm 3 Layer Automatic Inflat..",
+            price: "70",
+            
+            productID: "item12",
+            catagory: "kids",
+            img: "https://gloimg.gbtcdn.com/soa/gb/store/6878025592978206720/16531/goods_thumb_220-v1/6cd7f3cabfaf.jpg",
+        },
+        {
+            brand: "Magic",
+            name: "360 Rotating Flying Ball Globe Shape Magic Cont..",
+            price: "2030",
+            
+            productID: "item12",
+            catagory: "kids",
+            img: "https://gloimg.gbtcdn.com/soa/gb/store/6878025592978206720/16420/goods_thumb_220-v3/d5477f83e8f5.jpg",
+        },
+        {
+            brand: "Xiaomi",
+            name: "Original Xiaomi Mitu Cubes Spinner Finger Bricks..",
+            price: "2025",
+            
+            productID: "item12",
+            catagory: "kids",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878402251153666048/16516/goods_thumb_220-v3/517a49553853.jpg",
+        },
+        {
+            brand: "Smartmi",
+            name: "Smartmi Air Humidifier 2 4L Large Capacity 99%..",
+            price: "20400",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/15985/goods_thumb_220-v9/cf68da0e3144.jpg",
+        },
+        {
+            brand: "Mijia",
+            name: "Mijia Handheld Vacuum Cleaner for Home Car..",
+            price: "20150",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/15894/goods_thumb_220-v1/d40486572ed6.jpg",
+        },
+        {
+            brand: "Mijia",
+            name: "Mijia Handheld Vacuum Cleaner for Car..",
+            price: "20140",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/16014/goods_thumb_220-v7/d7c5d72ae7f6.jpg",
+        },
+        {
+            brand: "ES06",
+            name: "ES06 Robot Vacuum Cleaner Smart vaccum cleaner for..",
+            price: "20170",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/16093/goods_thumb_220-v1/f22a1a56135e.jpg",
+        },
+        {
+            brand: "Miajia",
+            name: "MIJIA ZJ GT-301W Steamer Iron Mini Generator Travel..",
+            price: "20150",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/15937/goods_thumb_220-v5/fd5306395cbc.jpg",
+        },
+        {
+            brand: "JMEY",
+            name: "JMEY M2 Water Dispenser Instantly Heated 7 Speed..",
+            price: "2045",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/16028/goods_thumb_220-v5/9f39553b07fe.jpg",
+        },
+        {
+            brand: "Gym home",
+            name: "Yoga Chair Headstand Stool Men Women Gym Home..",
+            price: "2045",
+            productID: "item12",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6866331933228593152/16538/goods_thumb_220-v1/75ce5cfbb946.jpg",
+        },
+        {
+            brand: "Kore",
+            name: "Fitness Walking Machine Ultra Thin Smart Treadmill..",
+            price: "2045",
+            
+            productID: "item12",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/16031/goods_thumb_220-v1/fd61e88a1446.jpg",
+        },
+        {
+            brand: "Oddish",
+            name: "2-in-1 Multifunctional Foldable Treadmills Mini...",
+            price: "2045",
+            
+            productID: "item12",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6701436345185419264/16388/goods_thumb_220-v1/e24dc4b0496c.jpg",
+        },
+        {
+            brand: "Gym Home",
+            name: "Multifunction Mini Exercise Bike Step Machine Home..",
+            price: "2045",
+            
+            productID: "item12",
+            catagory: "Fitness",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/16062/goods_thumb_220-v1/fee99e2ff421.jpg",
+        },
+        {
+            brand: "Home Care",
+            name: "Juicer Machine 800W Juice Extractor with 3 Big Mouth..",
+            price: "2045",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/store/6911257965974712320/16513/goods_thumb_220-v1/58037d5bd9c5.jpg",
+        },
+        {
+            brand: "Aquara",
+            name: "Aqara Smart Human Body Motion Sensor Zigbee..",
+            price: "2045",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6878391336429613056/16486/goods_thumb_220-v1/66a4273e3c95.jpg",
+        },
+        {
+            brand: "Xiaomi",
+            name: "Original Xiaomi Smart Home Mosquito Repellent Automat..",
+            price: "2045",
+            
+            productID: "item12",
+            catagory: "Home Appliances",
+            img: "https://gloimg.gbtcdn.com/soa/gb/item/6615272824267153408/16014/goods_thumb_220-v5/084df2795547.jpg",
+        },
+
+
+    ]
+    let productsCont = document.getElementById("products");
+
+    let filter = document.getElementById("filter");
+
+    let cartLs = JSON.parse(localStorage.getItem("cart-page")) || [];
+
+    function displayProducts(productdata) {
+        productsCont.innerHTML = "";
+
+        productdata.forEach(function (ele) {
+            let product = document.createElement("div");
+
+            let img = document.createElement("img");
+            img.src = ele.img;
+
+            let name = document.createElement("h4");
+            name.textContent = ele.name;
+
+            let price = document.createElement("p");
+            price.textContent = ele.price;
+
+            let brand = document.createElement("h4");
+            brand.textContent = ele.brand;
+
+            let catagory = document.createComment("p");
+            catagory.textContent = ele.catagory;
+
+            let addtocart = document.createElement("button");
+            addtocart.innerText = "Add To Cart";
+
+            addtocart.addEventListener("click", function () {
+                if (addtocartFunc(ele.productID) === true) {
+                    alert("Product Added Successfully");
+                    cartLs.push(ele);
+                    localStorage.setItem("cart-page", JSON.stringify(cartLs));
+                }
+                else {
+                    alert("Product Already in the cart")
+                }
+            })
+            product.append(img, name, price, brand, catagory, addtocart);
+
+            productsCont.append(product)
+
+        })
+    }
+    displayProducts(productData);
+
+    filter.addEventListener("change", function () {
+        if (filter.value === "All") {
+            displayProducts(productData);
+        }
+        else {
+            let filtered = productData.filter(function (ele) {
+                return ele.catagory === filter.value;
+            })
+            displayProducts(filtered);
+        }
+    })
+
+
+    function addtocartFunc(id) {
+        for (let i = 0; i < cartLs.length; i++) {
+            if (cartLs[i].productID == id) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+</script>
+
+</html>

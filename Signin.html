@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Gearbest.com</title>
+    <link rel="shortcut icon"type="image" href="https://codice-promozionale-gear.com/wp-content/uploads/2019/12/logo_gearbest.png">
+    <style>
+        
+        .logo{
+            border: 1px solid transparent;
+            margin-left: 30px;
+            padding: 20px;
+            /* border:  1px solid red; */
+            cursor: pointer;
+        }
+        img{
+            width: 235px;
+            margin-left: -200px;
+            margin-top: 20px;
+        }
+        #form{
+            width: 400px;
+            height: 440px;
+            margin-left: 850px;
+            /* border: 1px solid red; */
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+
+        #form>div{
+            display: flex;
+            gap: 20px;
+            padding:-15px;
+        }
+        /* h1{
+            margin-left: 20px;
+            font-size: 22px;
+        } */
+        .tpbtn{
+            margin-left: 25px;
+            /* box-shadow: rgba(0, 0, 0, 0.24); */
+            /* border: 1px solid red; */
+          
+             
+                  
+        }
+        .tpbtn :hover{
+            color: black;
+            /* background-color:rgb(248, 216, 36); */
+            text-decoration: underline;
+            text-decoration-color: rgb(248, 216, 36);;
+            text-decoration-thickness: 5px;
+            
+            
+        }
+        .tpbtn>button{
+            
+            border:1px solid transparent;
+            background-color: white;
+            font-size: 20px;
+            color: grey;
+            cursor: pointer;
+            
+          
+        }
+        input{
+            width: 320px;
+            height: 30px;
+            margin: auto;
+            padding: 5px;
+            margin-left: 30px;
+            gap: 20px;
+           
+            border: 1px solid rgb(183, 180, 180);
+            
+        }
+        input+input{
+            margin-top: 15px;
+
+        }
+        input+input+input{
+            width: 20px;
+            border: 1px solid grey;
+        }
+        #button{
+            margin-top: 28px;
+            display: block;
+            background-color: rgb(248, 216, 36);
+            width: 330px;
+            height: 42px;
+            font-weight:bold;
+            font-size: 17px;
+            
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-family:'poppins',Sans-serif;
+        }
+        #button:hover{
+            background-color: rgb(223, 198, 55);;
+        }
+        #forgot{
+            
+            display: block;
+            width: 150px;
+            margin: -28px 0px 0px 55px
+        }
+        a{
+            display: block;
+            margin: -16.5px 0 3px 239px;
+            font-family:'poppins',Sans-serif;
+            font-size:15px;
+        }
+        p{
+            text-align: center;
+            margin-top: 40px;
+            font-family:'poppins',Sans-serif;
+            font-size: 15px;
+            
+        }
+        #gimg>a>img{
+
+            width: 32px;
+            margin: auto;
+            margin-left: -60px;
+            margin-top: 10px;
+            border: 1px solid grey;
+            border-radius: 50%;
+            padding: 7px;
+            cursor: pointer;
+        }
+
+       
+        
+        
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="index.html" target="_blank"><img src="https://uidesign.gbtcdn.com/GB/images/promotion/2019/a_evan/Gearbest/logo_gearbest.png" alt=""></a>
+    </div>
+    <form id="form" action="">
+       <div class="tpbtn">
+        <button ><h4>SIGN IN</h4></button>
+        <button onclick="reg()"><h4>REGISTER</h4></button>
+       </div>
+       <input id="email" type="text" placeholder="Email">
+       <input id="password" type="password" placeholder="Password">
+       <input type="checkbox" > <p id="forgot">Keep me signed in ?</p>
+       <a style="color:grey ;" href="https://login.gearbest.com/reset-password.html">Forgot Password?</a>
+       <input id="button" type="submit" value= "Sign In" >
+       <p>or connect via</p>
+       <div id="gimg">
+        <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=643156394993-6mlvl2ls6f900t3fg9qr16v536fes0gq.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Flogin.gearbest.com%2Fsocial%2Ffacade%2F2&response_type=code&scope=email+profile&display=popup" target="_blank"><img src="https://pbs.twimg.com/profile_images/1455185376876826625/s1AjSxph_400x400.jpg" alt=""></a>
+       </div>
+    </form>
+
+  
+    </div>
+</body>
+</html>
+
+<script>
+    
+
+
+    let form=document.querySelector("form");
+   
+    let userData=JSON.parse(localStorage.getItem("userData")) || [];
+
+    form.addEventListener("submit",function(event){
+        event.preventDefault()
+        let data={
+            email:form.email.value,
+            password:form.password.value,
+
+        }
+        if(checkSignin(data.email,data.password)===true){
+            localStorage.setItem("Signin",JSON.stringify(data));
+            // alert("Sign in Successful");
+            window.location.href="index.html";
+
+        }
+        else{
+            alert("Wrong Username or Password")
+        }
+    })
+
+    function checkSignin(email,password){
+        let filter = userData.filter(function(element){
+            return element.email === email && element.password===password;
+        })
+        if(filter.length>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    
+    function reg(){
+        window.location.href="register.html";
+        alert="";
+    }
+    
+</script>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTER</title>
+    <style>
+        #logo{
+            width: 20%;
+            height: 100px;
+            margin-left: 30px;
+            padding: 20px;
+        }
+        img{
+            width: 90%;
+        }
+        #form{
+            width: 450px;
+            height: 700px;
+            margin-left: 750px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+         
+        }
+        #form>div{
+            display: flex;
+            gap: 20px;
+            padding: -15px;
+        }
+        p{
+            color: orange;
+        }
+        .bgr{
+            margin-left: 25px;
+            margin-bottom: 16px;
+            padding: -10px;
+        }
+        .bgr:hover{
+            color:black;
+            text-decoration: underline;
+            text-decoration-color: yellow;
+            text-decoration-thickness: 5px ;
+        }
+        .bgr>button{
+            border: transparent;
+            background-color: white;
+            font-size: 22px;
+            color: grey;
+            cursor: pointer; 
+            
+        }
+        
+        input{
+            width:77%;
+            height: 30px;
+            margin-left: 50px;
+            padding: 5px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            gap: 20px;
+            border: 1px solid grey;
+            cursor: pointer;
+        }  
+        #btn{
+            width:80%;
+            background-color: yellow;
+            height: 40px;
+            margin: auto;
+            margin-left: 50px;
+            font-size: 22px;
+            border: 1px solid transparent;
+        }
+        #btn:hover{
+            background-color: rgb(241, 241, 9);
+        }
+        #form>p{
+           margin-left: 50px;
+        }
+        
+        .lipi{
+            height: 70px;
+            width: 20%;
+          
+            margin: auto;
+            margin-top: 30px;
+        }
+        .lipi>img{
+            width: 80%;
+            border-radius: 50%;
+            border: 1px solid grey;
+            padding: 10px;
+        }
+        #bbsr{
+            margin-left: -107px;
+        }
+        #khr{
+            display: block;
+            color: black;
+            /* border: 1px solid blue; */
+            width: 60%;
+            justify-content: center;
+            
+        }
+        #mayu{
+            display: block;
+            color: black;
+            width: 30%;
+            
+            text-align: center;
+            margin-right: 10px
+            
+            
+            
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div id="logo">
+        <img src="https://uidesign.gbtcdn.com/GB/images/promotion/2019/a_evan/Gearbest/logo_gearbest.png"/>
+    </div>
+    <form id="form" action="">
+        <div class="bgr">
+            <button onclick="sign()"><h4>SIGN IN</h4></button>
+            <button><h4>REGISTER</h4></button>
+        </div>      
+        <input placeholder="Enter email" id="email" name="email" type="email" />
+        <input type="password" placeholder="Create password" id="password" name="password" id="text" />
+        <input type="password" placeholder="Re-type password" id="retypepassword" name="retypepassword" id="text" />
+        <input id="bbsr" type="checkbox"><p id="khr">I agree to Gearbest Terms and Condition and Privacy Policies</p> 
+        <p>Tip: To maximize online security, please do not reuse passwords or choose easy to guess ones on Gearbest.</p> 
+        <button id="btn">Register</button>
+        <p id="mayu">or connect via</p>
+        <div class="lipi">
+            <img src="https://pbs.twimg.com/profile_images/1455185376876826625/s1AjSxph_400x400.jpg"/>
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    
+
+    let form=document.querySelector("form");
+    let userData=JSON.parse(localStorage.getItem("userData")) || [];
+    form.addEventListener("submit",function(event){
+        event.preventDefault();
+        let data={
+            name:form.name.value,
+            email:form.email.value,
+            password:form.password.value
+        }
+        if(checkEmails(data.email)=== true){
+            userData.push(data);
+            localStorage.setItem("userData",JSON.stringify(userData));
+        }
+        else{
+            alert("Account Already Exist");
+        }
+    })
+
+    function checkEmails(email){
+        let filtered  = userData.filter(function(element){
+            return email === element.email;
+
+        })
+        if(filtered.length>0){
+            return false
+        }
+        else{
+            return true;
+        }
+    }
+    function sign(){
+        window.location.href="Project.html";
+        alert="";
+    }
+</script>

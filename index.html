@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/f91f5d8c4b.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Gearbest: Affordable Quality, Fun Shopping</title>
+    <style>
+      * {
+        margin: auto;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      #head1 {
+        width: 1190px;
+        height: 36px;
+        display: flex;
+        margin-bottom: -15px;
+        margin-left: 25px;
+      }
+      #head1 > h6 {
+        font-size: 12px;
+        padding-left: 20px;
+        padding-top: 22px;
+        color: rgb(59, 58, 58);
+        cursor: pointer;
+      }
+      #head1 > h6:nth-child(3) > img {
+        width: 20px;
+        height: 13px;
+        padding-top: 2px;
+      }
+      #head1 > h6:hover {
+        text-decoration: underline;
+      }
+      #head1 > h6:first-child {
+        padding-left: 570px;
+      }
+      #head1 > h6:last-child > #cont {
+        font-size: 12px;
+        font-weight: bold;
+        padding-top: px;
+        color: rgb(59, 58, 58);
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+      #head1 > h6:last-child > #cont:hover {
+        text-decoration: underline;
+      }
+
+      #header {
+        width: 1190px;
+        height: 70px;
+        margin-left: 25px;
+        margin-bottom: 20px;
+        display: flex;
+      }
+      #header > div:nth-child(1) {
+        justify-content: space-around;
+        width: 230px;
+        height: 50px;
+      }
+      #header > .logo > img {
+        width: 100%;
+        height: 100%;
+        margin-top: 0px;
+      }
+
+      #header > div:nth-child(3) {
+        margin-top: 35px;
+      }
+      #header > div:nth-child(4) {
+        margin-top: 35px;
+      }
+      #header > div:nth-child(5) {
+        margin-top: 35px;
+      }
+      #header > .searchbar {
+        width: 450px;
+        height: 40px;
+        border: 2px solid #ffda00;
+        border-radius: 40px;
+        margin-left: 180px;
+        margin-top: 25px;
+      }
+
+      #header > .searchbar > #frm > input {
+        height: 25px;
+        width: 370px;
+        margin-left: 30px;
+        border: none;
+        padding-top: 5px;
+        outline: none;
+      }
+      #header > .searchbar > #frm {
+        display: flex;
+      }
+      #header > .searchbar > #frm > #selector {
+        width: 50px;
+        outline: none;
+        border: none;
+        margin-left: 5px;
+      }
+      #header > .searchbar > #frm > .fa-solid {
+        width: 42px;
+        height: 36px;
+        background-color: #ffda00;
+        padding-left: 7px;
+        padding-top: 10px;
+        border-radius: 0% 40% 40% 0%;
+        cursor: pointer;
+      }
+
+      #header > div > a {
+        text-decoration: none;
+        color: rgb(59, 58, 58);
+        margin-left: 30px;
+      }
+      #header > div > a > .fa-solid {
+        background-color: #ffda00;
+      }
+      ul {
+        width: 1190px;
+        height: 40px;
+        list-style: none;
+        margin-left: 25px;
+        font-family: "Open Sans", Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        background-color: #ffda00;
+        margin-top: -15px;
+      }
+      ul > li {
+        float: left;
+        width: 230px;
+        height: 40px;
+
+        margin-right: 8px;
+      }
+      ul > li:first-child {
+        background-color: black;
+      }
+      ul > li > a {
+        text-decoration: none;
+        color: black;
+        line-height: 40px;
+        font-weight: bold;
+        display: block;
+        text-align: center;
+      }
+      ul > li > a:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 5px;
+      }
+
+      ul > li:first-child > a:first-child {
+        color: white;
+        text-decoration: none;
+      }
+
+      .crauser {
+        width: 1190px;
+        margin-left: 25px;
+        position: relative;
+      }
+      .crauser > button {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        color: white;
+        font-size: 15px;
+        border-radius: 100%;
+        background-color: rgba(77, 77, 77, 0.8);
+        cursor: pointer;
+      }
+      .crauser > button:nth-child(2) {
+        bottom: 30px;
+        right: 260px;
+      }
+      .crauser > button:nth-child(3) {
+        bottom: 30px;
+        right: 50px;
+      }
+      .crauser > #prod {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 230px;
+        height: 420px;
+        background-color: rgba(255, 255, 255, 0.829);
+      }
+      #prod > a {
+        display: block;
+        color: black;
+        text-decoration: none;
+        font-family: "Open Sans", Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        padding: 8px 10px;
+        line-height: 13px;
+      }
+      #prod > a:hover {
+        font-weight: bold;
+      }
+      #show {
+        width: 1190px;
+        height: 120px;
+
+        margin-left: 25px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 120px;
+        gap: 10px;
+      }
+      #show > div:first-child {
+        width: 230px;
+        height: 120px;
+        background-color: rgb(63, 59, 59);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="head1">
+      <h6>
+        <i class="fa-solid fa-mobile-screen"></i>&nbsp;Save $3 with App &nbsp;<i
+          class="fa-solid fa-angle-down"
+        ></i>
+      </h6>
+      <h6>Support centre</h6>
+      <h6>
+        Ship to
+        <img
+          src="https://uidesign.gbtcdn.com/GB/app/2018/flag_png/in.png"
+          alt=""
+        />
+        /Ind &nbsp;<i class="fa-solid fa-angle-down"></i>
+      </h6>
+      <h6>Language &nbsp;<i class="fa-solid fa-angle-down"></i></h6>
+
+      <h6>
+        <select name="" id="cont">
+          <option value="">
+            Country Website &nbsp;<i class="fa-solid fa-angle-down"></i>
+          </option>
+
+          <option value="">Global(English)</option>
+          <option value="">India</option>
+          <option value="">France</option>
+          <option value="">Italian</option>
+          <option value="">Japan</option>
+          <option value="">Polaska</option>
+          <option value="">Russia</option>
+          <option value="">China</option>
+          <option value="">Portgual</option>
+          <option value="">Pakistan</option>
+        </select>
+      </h6>
+    </div>
+    <div id="header">
+      <div class="logo">
+        <img
+          src="https://uidesign.gbtcdn.com/GB/images/promotion/2019/a_evan/Gearbest/logo_gearbest.png"
+          alt="logo"
+        />
+      </div>
+      <div class="searchbar">
+        <form id="frm">
+          <select name="All" id="selector">
+            <option value="All">
+              All<i class="fa-solid fa-circle-chevron-down"></i>
+            </option>
+            <option value="MARKETPLACE">
+              <a href="product.html">MARKETPLACE</a>
+            </option>
+            <option value="Appliances">
+              <a href="product.html">Appliances</a>
+            </option>
+            <option value="Cell Phones & Accessories">
+              <a href="product.html">Cell Phones & Accessories</a>
+            </option>
+            <option value="Women's Bag">
+              <a href="product.html"> Womens Bag </a>
+            </option>
+            <option value="Computer,Tablet">
+              <a href="product.html">Computer,Tablet</a>
+            </option>
+            <option value="Consumer & Electronic">
+              <a href="product.html">Consumer & Electronic</a>
+            </option>
+          </select>
+          <input type="text" id="search" placeholder="Search keyword" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </form>
+      </div>
+      <div>
+        <a href="register.html"
+          ><i class="fa-solid fa-user-plus"></i>&nbsp; SignIn</a
+        >
+      </div>
+      <div>
+        <a href=""><i class="fa-brands fa-gratipay"></i> &nbsp; Favorite</a>
+      </div>
+      <div>
+        <a href="AddToCart.html"
+          ><i class="fa-solid fa-cart-plus"></i> &nbsp; Cart</a
+        >
+      </div>
+    </div>
+
+    <ul>
+      <li><a href="product.html">Category</a></li>
+      <li><a href="product.html">COUPON</a></li>
+      <li><a href="product.html">SUPER DEALS</a></li>
+      <li><a href="product.html">APP ONLY</a></li>
+      <li><a href="product.html">NEW ARRIVALS</a></li>
+    </ul>
+    <div class="crauser">
+      <img
+        id="img"
+        src="https://uidesign.gbtcdn.com/GB/image/8823/Father1190X420en.jpg?imbypass=true"
+        alt=""
+      />
+      <button><</button>
+      <button>></button>
+      <div id="prod">
+        <a href="product.html">Consumer Electronic</a>
+        <a href="product.html">Indistrial & Scientific</a>
+        <a href="product.html">Cel phones & Accessories</a>
+        <a href="product.html">Appliance</a>
+        <a href="product.html">Outdoors, Fitness & Sports</a>
+        <a href="product.html">Computers, Tablets & Office</a>
+        <a href="product.html">Health & Personal care</a>
+        <a href="product.html">Home Improvement & Tools</a>
+        <a href="product.html">Drones Toys & Hobbies</a>
+        <a href="product.html">Home & Garden</a>
+        <a href="product.html">Motor & Car Electronics</a>
+        <a href="product.html">Men x Fashion</a>
+        <a href="product.html">Watches & jewelry</a>
+        <a href="product.html">Gearbest Promotion</a>
+      </div>
+    </div>
+    <div id="show">
+      <div></div>
+      <div>
+        <a href="product.html"
+          ><img
+            src="https://uidesign.gbtcdn.com/GB/image/8823/L900-230X120-en.jpg"
+            alt=""
+        /></a>
+      </div>
+      <div>
+        <a href="product.html"
+          ><img
+            src="https://uidesign.gbtcdn.com/GB/image/8823/C230X120-en.jpg"
+            alt=""
+        /></a>
+      </div>
+      <div>
+        <a href="product.html"
+          ><img
+            src="https://uidesign.gbtcdn.com/GB/image/7257/230_120_en.jpg"
+            alt=""
+        /></a>
+      </div>
+      <div>
+        <a href="product.html"
+          ><img
+            src="https://uidesign.gbtcdn.com/GB/image/6874/230x120b_en.jpg"
+            alt=""
+        /></a>
+      </div>
+    </div>
+    <!-- <div id="products"></div> -->
+  </body>
+  <script>
+    let img = document.querySelector("#img");
+    let buttons = document.querySelectorAll("button");
+    let imgNum = 0;
+
+    let imgArray = [
+      "https://uidesign.gbtcdn.com/GB/image/8823/Father1190X420en.jpg?imbypass=true",
+      "https://uidesign.gbtcdn.com/GB/image/8823/ORTUR_1190X420_EN.jpg?queryFrom=soa",
+      "https://uidesign.gbtcdn.com/GB/image/9534/Smart+Watches+PC+1190X420+EN.jpg",
+      "https://uidesign.gbtcdn.com/GB/image/8823/1190X420.jpg",
+      "https://uidesign.gbtcdn.com/GB/image/8823/1190X420-en1.jpg",
+    ];
+
+    buttons[0].addEventListener("click", function () {
+      if (imgNum === 0) {
+        imgNum = imgArray.length - 1;
+      } else {
+        imgNum--;
+      }
+      img.src = imgArray[imgNum];
+    });
+
+    buttons[1].addEventListener("click", function () {
+      if (imgNum === imgArray.length - 1) {
+        imgNum = 0;
+      } else {
+        imgNum++;
+      }
+      img.src = imgArray[imgNum];
+    });
+  </script>
+</html>

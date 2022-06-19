@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            margin: auto
+        }
+
+        #a {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+        }
+
+        #a>div:nth-child(1) {
+            margin-left: 20px;
+        }
+
+        #a>div:nth-child(2) {
+            display: flex;
+            margin-right: 100px;
+            font-size: 14px;
+
+        }
+
+        #a>div:nth-child(1)>img {
+            width: 210px;
+            height: 45px;
+            margin-left: 60px;
+
+        }
+
+        #a>div:nth-child(2)>img {
+            width: 22px;
+            height: 13px;
+            margin: 15px 5px;
+        }
+
+        #b {
+            width: 1160px;
+            margin: auto;
+
+        }
+
+        .b {
+
+            color: #666;
+            font-family: OpenSans, Arial, Helvetica, sans-serif;
+            width: 83.333334%;
+            margin: 85px auto 64px;
+            background: #e0e0e0;
+            font-size: 20px;
+            height: 4px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+
+        table>thead>tr>td {
+            font-family: OpenSans, Arial, Helvetica, sans-serif;
+            color: #666;
+            background: #fff;
+            width: 80%;
+            height: 35px;
+            padding: 10px 50px 10px 20px;
+            margin-top: 100px;
+            font-size: 14px;
+
+        }
+
+        table {
+            margin: 80px;
+        }
+
+        p1 {
+            margin-left: 6%;
+            font-size: 28px;
+
+        }
+
+        #main {
+            width: 88%;
+            height: 150px;
+            margin: auto;
+            margin-top: 15px;
+            display: flex;
+            gap: 5px;
+            background-color: white;
+            position: relative;
+
+        }
+
+        #main>div {
+            height: 250px;
+            margin-bottom: 500px;
+            background-color: white;
+            padding: 20px;
+        }
+
+        #main>div:hover {
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+
+        #main>div>p {
+            font-size: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        #main>div>p:hover {
+            color: rgb(245, 118, 0);
+        }
+
+        #main>div>p+p2 {
+            font-size: 20px;
+            color: red;
+        }
+
+        #main>div:hover {
+            box-shadow: 0 12px 30px rgba(2px 4px 5px 2px);
+        }
+
+        #main>div>img {
+            width: 90%;
+            height: 65%;
+            margin-bottom: -10px;
+            cursor: pointer;
+        }
+
+        #main>button {
+            position: absolute;
+            width: 30px;
+            height: 50px;
+            background-color: grey;
+            border: none;
+        }
+
+        #main>button:nth-child(1) {
+            right: 0px;
+            margin-top: 10%;
+            color: white;
+            font-size: 20px;
+
+        }
+
+        #main>button:nth-child(1):hover {
+            background-color: black;
+        }
+
+        #main>button:nth-child(2) {
+            left: px;
+            margin-top: 10%;
+            color: white;
+            font-size: 20px;
+        }
+
+        #main>button:nth-child(2):hover {
+            background-color: black;
+        }
+
+        #btn1 {
+            margin-left: 80%;
+            font-size: 25px;
+            background-color: rgb(91, 91, 238);
+            color: white;
+            border: transparent;
+            border-radius: 20px;
+            width: 10%;
+
+
+        }
+
+        #btn1>a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #btn1:hover {
+            letter-spacing: 2px;
+            background-color: green;
+        }
+
+        #div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #cart-total {
+            text-align: center;
+            color: red;
+        }
+
+        h1 {
+            text-align: center;
+            color: green;
+            margin-top: -2%;
+        }
+
+        #products {
+            width: 40%;
+            gap: 30px;
+            margin-left: 30px;
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            grid-template-rows: auto;
+        }
+     button{
+        width:40%;
+        font-size: 18px;
+        border-radius: 10px;
+        border: none;
+       color:white;
+        background-color: red;
+     }
+     button:hover{
+      letter-spacing: 2px;
+     }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="a">
+        <div>
+            <img src="https://uidesign.gbtcdn.com/GB/images/promotion/2019/a_evan/Gearbest/logo_gearbest.png"
+                alt="Error">
+        </div>
+        <div>
+            <p>Ship to</p>
+            <img src="https://uidesign.gbtcdn.com/GB/app/2018/flag_png/us.png" alt="Error">
+            <p>/ USD </p>
+
+        </div>
+    </div>
+    <div id="b">
+        <ul class="b">
+            <li>
+                <p>Cart</p>
+            </li>
+            <li>
+                <p>Place Order</p>
+            </li>
+            <li>
+                <p>Payment</p>
+            </li>
+
+        </ul>
+    </div>
+    <!-- <table cellspacing="0">
+        <thead>
+            <tr>
+                <td>Selected Item(s)</td>
+                <td>Unit Price</td>
+                <td>Quantity</td>
+                <td>Subtotal</td>
+                <td>Operation</td>
+            </tr>
+        </thead>
+        <tbody>
+
+             Table Rows should be appended Here  -->
+    <!-- </tbody>
+    </table> -->
+    <h1>Total Price:-</h1>
+
+    <h2 id="cart-total">
+
+    </h2>
+
+    <div id="products">
+
+    </div><br><br>
+    
+    <button id="btn1"><a href="AddressPage.html">Checkout</a></button><br><br>
+
+    <p1>
+        You Might Also Like
+    </p1>
+    <div id="main">
+        <button> > </button>
+        <button>
+            < </button>
+                <div>
+
+                    <img
+                        src="https://gloimg.gbtcdn.com/soa/gb/store/6866331803104505856/16499/goods_img-v4/8f7633ce94b9.jpg" />
+                    <p>Original External SSD 2TB 1TB 4TB Mobile Solid State Hard Drive..</p>
+                    <p2>$55.78</p2>
+                </div>
+                <div>
+                    <img
+                        src="https://gloimg.gbtcdn.com/soa/gb/item/6883820374342168576/16487/goods_img-v1/9bd2c3157fee.jpg" />
+                    <p>Smartphone S22 Ultra 5G Cellular 6.8 Inch 6800mAh.. </p>
+                    <p2>$129.90</p2>
+                </div>
+                <div>
+                    <img
+                        src="https://gloimg.gbtcdn.com/soa/gb/item/6878030535709618176/16450/goods_img-v3/980e8a024bfa.jpg" />
+                    <p>1500 TWS Wireless Bluetooth 5.0 Touch HIFI.. </p>
+                    <p2>$16.68</p2>
+                </div>
+                <div>
+                    <img
+                        src="https://gloimg.gbtcdn.com/soa/gb/item/6883820374342168576/16499/goods_img-v5/d80e56d8f6d2.jpg" />
+                    <p>Global Version MI 11 Ultra 6.3 Inch Smartphone 12..</p>
+                    <p2>$107.99</p2>
+                </div>
+                <div>
+                    <img
+                        src="https://gloimg.gbtcdn.com/soa/gb/item/6883820374342168576/16472/goods_img-v1/3a6f1ce7b307.jpg" />
+                    <p>M11 Ultra Smartphone 16GB+ 1TB 24_48MP...</p>
+                    <p2>$120.50</p2>
+                </div>
+                <div>
+                    <img
+                        src="https://gloimg.gbtcdn.com/soa/gb/store/6615272824267153408/16421/goods_img-v4/dbf51fda4286.jpg" />
+                    <p>Original Xiaomi Redmi Airdots 2 TWS Fone... </p>
+                    <p2>$11.90</p2>
+                </div>
+
+    </div>
+
+
+
+</body>
+
+
+<script>
+    let productsCont = document.getElementById("products");
+
+    let cartLs = JSON.parse(localStorage.getItem("cart-page")) || [];
+
+    // count all product price 
+
+
+    let total = cartLs.reduce(function (sum, { price }) {
+        return sum + Number(price);
+    }, 0);
+
+    let total_value = document.querySelector("#cart-total");
+    total_value.innerText = total;
+
+
+    function displayProducts(productdata) {
+        productsCont.innerHTML = "";
+        totalPrice = 0;
+        productdata.forEach(function (ele) {
+
+            totalPrice += +ele.price;
+
+            let product = document.createElement("div");
+
+            let img = document.createElement("img");
+            img.src = ele.img;
+
+            let name = document.createElement("h3");
+            name.textContent = ele.name;
+
+            let catagory = document.createElement("p");
+            catagory.textContent = ele.catagory;
+
+            let price = document.createElement("p");
+            price.textContent = ele.price;
+
+            let Deletecart = document.createElement("button");
+            Deletecart.innerText = "Delete";
+
+            Deletecart.addEventListener("click", function () {
+                Delete(ele.productID)
+            })
+
+            product.append(img, name, catagory, price, Deletecart);
+
+            productsCont.append(product)
+
+        });
+
+    }
+    displayProducts(cartLs);
+
+    function Delete(id) {
+        let deleted = cartLs.filter(function (el) {
+            return el.productID != id;
+        })
+        cartLs = deleted;
+        localStorage.setItem("cart-page", JSON.stringify(cartLs));
+        displayProducts(cartLs);
+    }
+
+
+</script>
+
+</html>
